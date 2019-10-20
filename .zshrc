@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/phantrinh/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -96,10 +96,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-function restart_kafka() {
-  docker rm -f parcel-perform_kafka_1
-  docker rm -f parcel-perform_zookeeper_1
-  docker-compose -f ~/work/parcel-perform/docker-compose-infra.yml up -d --force-recreate zookeeper kafka
-}
 
 export PATH=/usr/local/sbin:$PATH
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default
+  fi
+}
