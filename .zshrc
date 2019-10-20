@@ -101,3 +101,5 @@ function restart_kafka() {
   docker rm -f parcel-perform_zookeeper_1
   docker-compose -f ~/work/parcel-perform/docker-compose-infra.yml up -d --force-recreate zookeeper kafka
 }
+
+export PATH=/usr/local/sbin:$PATH
